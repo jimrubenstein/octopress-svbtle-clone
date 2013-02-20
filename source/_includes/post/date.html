@@ -13,3 +13,8 @@
 {% if was_updated != '0' %}
   {% capture updated %}<time datetime="{{ updated | datetime | date_to_xmlschema }}" class="updated">Updated {{ updated_formatted }}</time>{% endcapture %}
 {% else %}{% assign updated = false %}{% endif %}
+
+{{ time }}
+{% if updated %}
+	{{ updated }}
+{% endif %}

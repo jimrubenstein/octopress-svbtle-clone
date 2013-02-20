@@ -1,14 +1,82 @@
-{% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
-{% include head.html %}
-<body {% if page.body_id %} id="{{ page.body_id }}" {% endif %} {% if page.sidebar == false %} class="no-sidebar" {% endif %} {% if page.sidebar == 'collapse' or site.sidebar == 'collapse' %} class="collapse-sidebar sidebar-footer" {% endif %}>
-  <header role="banner">{% include header.html %}</header>
-  <nav role="navigation">{% include navigation.html %}</nav>
-  <div id="main">
-    <div id="content">
-      {{ content | expand_urls: root_url }}
-    </div>
-  </div>
-  <footer role="contentinfo">{% include footer.html %}</footer>
-  {% include after_footer.html %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#" xml:lang="en" lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="imagetoolbar" content="false" />
+
+<!-- Title -->
+<title>{% if page.title %} {{ page.title }} | {% endif %} Jim Rubenstein</title>
+
+<!-- Custom Fonts -->
+<link href="http://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel="stylesheet" type="text/css" />
+<link href='http://static.tumblr.com/dbek3sy/VtLmbsu90/socialico.css' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"></link>  
+
+<!--
+
+<meta name="image:Logo 200x200" content="http://static.tumblr.com/morei1o/oIomgo6sn/logo200x200.png"/>
+<meta name="image:Logo Retina 400x400" content="http://static.tumblr.com/morei1o/jEymgo6u2/logo_retina400x400.png"/>
+
+-->
+
+<!-- For Syntax Highlighting -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css"></link>  
+<script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>  
+<script type="text/javascript">
+function styleCode()
+{
+	if (typeof disableStyleCode != 'undefined') { return; }
+
+	var a = false;
+
+	$('code').each(function() {
+	if (!$(this).hasClass('prettyprint') && !$(this).hasClass('uglyprint')) {
+	$(this).addClass('prettyprint');
+	a = true;
+	}
+	});
+
+	if (a) { prettyPrint(); } 
+}
+$(function() {styleCode();});
+</script>
+<body>
+	<!-- Sidebar -->
+	<div id="sidebar">
+
+		<!-- Logo -->
+		<div class="logo">
+			<a href="/" title="jimsc">
+				<span class="img"></span>
+			</a>
+		</div>
+		
+			<h1><a href="/" title="jimsc">jimsc</a></h1>
+			<h2><a href="/" title="Jim Rubenstein">Jim Rubenstein</a></h2>
+			<h3 class="description">Geektalk</h3>
+
+		<!-- Navigation -->
+		<ul class="navigation">
+			<li><a href="http://jimsc.com">jimsc</a></li>
+			<li><a href="http://github.com/jimrubenstein">github</a></li>
+			<li><a href="http://twitter.com/jim_rubenstein">@jim_rubenstein</a></li>
+		</li>
+
+		<div class="sidebar">
+		  {% if site.default_asides.size %}
+		    {% include_array default_asides %}
+		  {% endif %}
+		</div>
+	</div>
+
+	<div id="main">
+		{{ content }}
+	</div>
 </body>
 </html>
+
